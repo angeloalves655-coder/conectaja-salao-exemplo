@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Studio Bella Mulher | Salão de Beleza & Estética</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background: linear-gradient(135deg, #120a10, #1f121d, #2d182b);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+        }
+        .main-wrapper {
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 35px;
+        }
+        .container {
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .profile-img {
+            width: 135px;
+            height: 135px;
+            border-radius: 50%;
+            background: #d946ef;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 30px rgba(217, 70, 239, 0.5);
+            border: 3px solid #f472b6;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.06);
+        }
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+            color: #fdf4ff;
+            letter-spacing: 0.8px;
+            font-weight: 800;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #f472b6;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* Bloco de Apresentação */
+        .bio-card {
+            background: rgba(45, 24, 43, 0.6);
+            border: 1px solid rgba(244, 114, 182, 0.2);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .bio-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid #f472b6;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(217, 70, 239, 0.4);
+        }
+        .bio-content strong {
+            display: block;
+            font-size: 15px;
+            color: #fdf4ff;
+            margin-bottom: 4px;
+        }
+        .bio-content p {
+            font-size: 13px;
+            color: #f5d0fe;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+        .bio-content span {
+            color: #f472b6;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 13px;
+            color: #f472b6;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 25px 0 12px 0;
+            text-align: left;
+            padding-left: 6px;
+            border-left: 3px solid #d946ef;
+        }
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .btn {
+            background-color: rgba(45, 24, 43, 0.7);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        .btn-icon {
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background 0.3s ease;
+        }
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .btn-text strong {
+            font-size: 16px;
+            color: #fdf4ff;
+            margin-bottom: 3px;
+            font-weight: 700;
+        }
+        .btn-text p {
+            font-size: 13px;
+            color: #f5d0fe;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+        .btn:hover, .btn:focus {
+            background-color: rgba(217, 70, 239, 0.15);
+            border-color: #f472b6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(217, 70, 239, 0.3);
+        }
+        .btn:hover .btn-icon {
+            background: rgba(217, 70, 239, 0.3);
+            border-color: #f472b6;
+        }
+
+        /* Botão do WhatsApp de Alta Conversão */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            border-color: #4ade80;
+            animation: pulseGlow 2s infinite;
+            box-shadow: 0 4px 25px rgba(34, 197, 94, 0.4);
+        }
+        .btn-whatsapp .btn-icon {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .btn-whatsapp .btn-text strong {
+            color: #ffffff;
+        }
+        .btn-whatsapp .btn-text p {
+            color: #ecfdf5;
+        }
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #15803d, #16a34a);
+            border-color: #86efac;
+            box-shadow: 0 10px 35px rgba(34, 197, 94, 0.6);
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            70% { box-shadow: 0 0 0 14px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* Mapa Interativo */
+        .map-section-wrapper {
+            width: 100%;
+            text-align: left;
+            margin: 10px 0;
+        }
+        .map-container {
+            background: rgba(45, 24, 43, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .map-container:hover {
+            border-color: #f472b6;
+            box-shadow: 0 12px 35px rgba(217, 70, 239, 0.3);
+            transform: translateY(-2px);
+        }
+        .map-frame-box {
+            width: 100%;
+            height: 160px;
+            position: relative;
+            background: #1f121d;
+            pointer-events: none;
+        }
+        .map-frame-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: contrast(1.1) saturate(1.2);
+        }
+        .map-footer-info {
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(18, 10, 16, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .map-footer-text strong {
+            display: block;
+            font-size: 14px;
+            color: #fdf4ff;
+        }
+        .map-action-btn {
+            background: #d946ef;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 10px;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+        .map-container:hover .map-action-btn {
+            background: #c026d3;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: #a21caf;
+            line-height: 1.6;
+            width: 100%;
+            text-align: center;
+        }
+        .footer a {
+            color: #f472b6;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer a:hover {
+            color: #fbcfe8;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="container">
+            <!-- Logo do Salão -->
+            <div class="profile-img">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=80" alt="Studio Bella Mulher">
+            </div>
+            <h1>Studio Bella Mulher</h1>
+            <div class="subtitle">Sua beleza em evidência todos os dias ✨</div>
+            
+            <!-- Apresentação -->
+            <div class="bio-card">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=200&q=80" alt="Equipe" class="bio-avatar">
+                <div class="bio-content">
+                    <strong>Especialistas em Autoestima</strong>
+                    <p>Cabelos, unhas, maquiagem e estética avançada em <span>Santa Bárbara d'Oeste</span>.</p>
+                </div>
+            </div>
+
+            <div class="links-container">
+                <!-- WhatsApp de Agendamento -->
+                <a href="https://wa.me/5519994604562?text=Olá!%20Vim%20pelo%20Bio%20Site%20do%20salão%20e%20gostaria%20de%20agendar%20um%20horário." class="btn btn-whatsapp" target="_blank">
+                    <div class="btn-icon">💬</div>
+                    <div class="btn-text">
+                        <strong>Agende seu Horário pelo WhatsApp</strong>
+                        <p>Atendimento rápido para verificar horários livres e garantir sua vaga.</p>
+                    </div>
+                </a>
+
+                <div class="section-title">Menu & Facilidades</div>
+                
+                <!-- Tabela de Preços -->
+                <a href="https://wa.me/5519994604562?text=Olá!%20Gostaria%20de%20receber%20a%20tabela%20completa%20de%20preços%20e%20serviços%20do%20salão." class="btn" target="_blank">
+                    <div class="btn-icon">📋</div>
+                    <div class="btn-text">
+                        <strong>Tabela de Preços & Serviços</strong>
+                        <p>Consulte valores de mechas, escova, unhas, design de sobrancelhas e pacotes.</p>
+                    </div>
+                </a>
+
+                <!-- Promoções da Semana -->
+                <a href="https://wa.me/5519994604562?text=Olá!%20Quero%20saber%20quais%20são%20as%20promoções%20da%20semana%20no%20salão." class="btn" target="_blank">
+                    <div class="btn-icon">🔥</div>
+                    <div class="btn-text">
+                        <strong>Combo & Promoções da Semana</strong>
+                        <p>Confira os pacotes especiais com descontos exclusivos para esta semana.</p>
+                    </div>
+                </a>
+
+                <!-- Avaliação Google (Atualizado com o link direto fornecido) -->
+                <a href="https://g.page/r/CZJJZd-Uf152EAE/review" class="btn" target="_blank">
+                    <div class="btn-icon">⭐</div>
+                    <div class="btn-text">
+                        <strong>Avalie Nosso Atendimento no Google</strong>
+                        <p>Sua opinião é essencial para mantermos nosso padrão 5 estrelas.</p>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/conectaja.digital?stkn=eWl6cW01bnFqcHQx&utm_source=qr" class="btn" target="_blank">
+                    <div class="btn-icon">📸</div>
+                    <div class="btn-text">
+                        <strong>Siga no Instagram</strong>
+                        <p>Acompanhe nossos resultados de transformações reais e dicas diárias.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Localização -->
+        <div class="map-section-wrapper">
+            <div class="section-title" style="margin-top: 10px;">Onde estamos localizado</div>
+            <a href="https://maps.google.com/?q=Santa+Barbara+d+Oeste+SP" class="map-container" target="_blank">
+                <div class="map-frame-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58852.12879685933!2d-47.433878!3d-22.7551525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89c47e8055621%3A0x6b2e1bf79dbf07!2sSanta%20B%C3%A1rbara%20d%27Oeste%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1650000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="map-footer-info">
+                    <div class="map-footer-text">
+                        <strong>Santa Bárbara d’Oeste</strong>
+                    </div>
+                    <div class="map-action-btn">Abrir no Maps 🧭</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            Desenvolvido por <a href="https://conectaj-bio.vercel.app/" target="_blank">ConectaJá</a> — Tecnologia que aproxima.
+        </div>
+    </div>
+</body>
+</html>
